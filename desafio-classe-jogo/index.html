@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Jogo do Herói</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Crie seu Herói</h2>
+
+        <input type="text" id="nome" placeholder="Nome do Herói">
+
+        <input type="number" id="idade" placeholder="Idade">
+
+        <select id="tipo">
+            <option value="mago">Mago</option>
+            <option value="guerreiro">Guerreiro</option>
+            <option value="monge">Monge</option>
+            <option value="ninja">Ninja</option>
+        </select>
+
+        <button onclick="criarHeroi()">Atacar</button>
+
+        <p id="resultado"></p>
+    </div>
+
+    <script src="heroi.js"></script>
+
+    <script>
+        function criarHeroi() {
+            const nome = document.getElementById("nome").value
+            const idade = document.getElementById("idade").value
+            const tipo = document.getElementById("tipo").value
+
+            if (!nome || !idade) {
+                document.getElementById("resultado").innerText = "Preencha todos os campos!"
+                return
+            }
+
+            const heroi = new Heroi(nome, idade, tipo)
+            const mensagem = heroi.atacar()
+
+            document.getElementById("resultado").innerText = mensagem
+        }
+    </script>
+
+</body>
+</html>
